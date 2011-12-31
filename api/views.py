@@ -28,12 +28,17 @@ class WineResource(Resource):
 
     @method
     def GET(request, wine_id):
-        return Wine.objects.get( id=int(wine_id) )
+        return Wine.objects.get( id = int( wine_id ) )
     
     @method
-    def PUT(request, *args, **kwargs):
+    def PUT(request, wine_id):
         fields = str_to_dict( request.raw_post_data )
         wine   = Wine( **fields )
         wine.save()
-        return wine
+        
+    @method
+    def DELETE(request, wine_id):
+        wine = Wine.objects.get( id = int( wine_id ) )
+        wine.delete()
+        
         
