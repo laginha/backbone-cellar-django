@@ -5,7 +5,7 @@ from django.shortcuts import render_to_response
 from django.template import RequestContext
 
 def home(request):
-    # it searches within the templates folder automagically
+    # it searches within the templates folder automatically
     return template(request, 'index.html')
 	
 def template(request, templ, data={}):

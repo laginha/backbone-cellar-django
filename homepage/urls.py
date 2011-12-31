@@ -1,6 +1,5 @@
 from django.conf.urls.defaults import *
 
-urlpatterns = patterns('wine_cellar.homepage.views',
+urlpatterns = patterns('homepage.views',
     url(r'^$', 'home', name='home'),
 )
-

@@ -1,4 +1,4 @@
-from api.models import Wine
+from api.models     import Wine
 from django.contrib import admin
 
-admin.site.register(Wine)
+admin.site.register( Wine )
