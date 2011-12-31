@@ -1,10 +1,9 @@
 from django.conf.urls.defaults import *
-from django.conf.urls.defaults import *
+from api.views                 import WinesResource, WineResource
 
-
-urlpatterns = patterns('wine_cellar',
-    # url(r'^wines$',                     ),
-    # url(r'^wines/(?P<wine_id>[0-9]+)$', ),
+urlpatterns = patterns('',
+    url(r'^wines$',                     WinesResource(), ),
+    url(r'^wines/(?P<wine_id>[0-9]+)$', WineResource(),  ),
 )
 
 

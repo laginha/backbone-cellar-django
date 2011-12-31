@@ -19,6 +19,6 @@ class Wine(models.Model):
 
     def values(self):
         # Get values of the Resource
-        def attr( f ):
-            return str( getattr(self, f) )
-        return dict([ (f, attr(f)) for f in self.fields() ])
+        attr  = lambda x: str( getattr(self, x) )
+        items = [ (f, attr(f)) for f in self.fields() ]
+        return [ dict( items ) ]
