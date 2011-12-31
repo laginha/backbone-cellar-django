@@ -40,5 +40,28 @@ class WineResource(Resource):
     def DELETE(request, wine_id):
         wine = Wine.objects.get( id = int( wine_id ) )
         wine.delete()
-        
+
+"""
+Q: Why am i not using django's generic class based views?
+R: I don't like the idea of having state on a view. Maybe i'm just being stuborn.
+
+ex:
+
+urlpatterns = patterns('',
+    url( r'^someresource$', SomeResource.as_view() ),
+)
+
+from django.views.generic.base import View
+
+class SomeResource( View ):
+    #http_method_names = ['get', 'post', 'put', 'delete', 'head', 'options', 'trace']
+
+    def get(self, request):
+        return HttpResponse( status=200 )
+  
+    def post(self, request):
+        return HttpResponse( status=200 )
+"""
+
+      
         

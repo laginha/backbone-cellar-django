@@ -22,7 +22,7 @@ def JsonResponse(req, data):
 
 
 class Resource(object):
-    snippet_url = "http://djangosnippets.org/snippets/1071/"
+    #http://djangosnippets.org/snippets/1071/
 
     def __call__(self, request, *args, **kwargs):
         try:
