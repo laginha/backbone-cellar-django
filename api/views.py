@@ -5,10 +5,9 @@ from api.utils   import Resource, method
 from api.models  import Wine
 import ast
 
-def query_to_dict( x ):
-    x = str( x.items()[0][0] )
-    x = x.replace( 'null', 'None' ) 
-    return ast.literal_eval( x )
+str_to_dict   = lambda x: ast.literal_eval( x.replace( 'null', 'None' )  )
+query_to_dict = lambda x: str_to_dict( str( x.items()[0][0] ) )
+    
 
 class WinesResource(Resource):
 
@@ -17,11 +16,12 @@ class WinesResource(Resource):
         return Wine.objects.all()
 
     @method
-    def POST(request, *args, **kwargs):
+    def POST(request):
         fields = query_to_dict( request.POST )
         wine   = Wine( **fields )
         wine.save()
         return wine
+        
         
 
 class WineResource(Resource):
@@ -30,3 +30,10 @@ class WineResource(Resource):
     def GET(request, wine_id):
         return Wine.objects.get( id=int(wine_id) )
     
+    @method
+    def PUT(request, *args, **kwargs):
+        fields = str_to_dict( request.raw_post_data )
+        wine   = Wine( **fields )
+        wine.save()
+        return wine
+        
