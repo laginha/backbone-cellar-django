@@ -46,6 +46,7 @@ class WineResource(Resource):
 Q: Why am i not using django-piston?
 A: I actually like piston as long as i only need GET's. For anything else, piston has some important pending issues.
 
+
 Q: Why am i not using django's simple generic views?
 A: They are not RESTful, are they? for each crud you would need to use a different url.
 
