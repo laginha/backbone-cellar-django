@@ -41,9 +41,28 @@ class WineResource(Resource):
         wine = Wine.objects.get( id = int( wine_id ) )
         wine.delete()
 
+
+"""
+Q: Why am i not using django's simple generic views?
+A: They are not RESTful, are they? for each crud you would use a different url
+
+ex:
+
+from django.views.generic               import DetailView, ListView
+from django.views.generic.create_update import create_object update_object, delete_object
+
+urlpatterns = patterns('',
+    url( r'^resource$',                       ListView.as_view( queryset = Resource.objects.all() ), # template_name ??
+    url( r'^resource/(?P<wine_id>[0-9]+)$',   DetailView.as_view( model=Resource ) ),                # template_name ??
+    url( r'^resource/new$',  ),
+    url( r'^resource/(?P<id>[0-9]+)/update$',  ),
+    url( r'^resource/(?P<id>[0-9]+)/destroy$',  ),
+)
+
+"""
 """
 Q: Why am i not using django's generic class based views?
-R: I don't like the idea of having state on a view. Maybe i'm just being stuborn.
+A: I don't like the idea of having state on a view. Maybe i'm just being stuborn.
 
 ex:
 
